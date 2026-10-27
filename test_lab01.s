@@ -3,8 +3,8 @@
 // Purdue University Fort Wayne
 // =============================================================================
 // =============================================================================
-// STUDENT NAME: ___________________
-// DATE:         ___________________
+// STUDENT NAME: Aidan Jimenez
+// DATE:         10/27/26
 // =============================================================================
 // OBJECTIVE:
 //   Implement a counted loop using register arithmetic and conditional
@@ -34,9 +34,13 @@ _start:
     // =========================================================================
     // Loop behavior:
     //   1. Add X0 into X4
+    ADD     X4, X4, X0
     //   2. Increment X5 by 1
+    ADD     X5, X5, X1
     //   3. Decrement X0 by 1 while setting condition flags
+    SUBS    X0, X0, X1
     //   4. If X0 is not zero, branch back to the loop
+    B.NE    sum_loop
     //
     // Supported instruction forms for this Educore build:
     //   - ADD  Xd, Xn, Xm
@@ -46,22 +50,22 @@ _start:
 sum_loop:
     // TODO #1: Add X0 to the running sum in X4
     // Syntax: ADD Xd, Xn, Xm
-
+    
     // YOUR CODE HERE
-
+    ADD     X4, X4, X0
     // TODO #2: Increment the iteration count in X5 using X1
     // Syntax: ADD Xd, Xn, Xm
 
     // YOUR CODE HERE
-
+    ADD     X5, X5, X1
     // TODO #3: Decrement X0 by subtracting X1, and set flags
     // Syntax: SUBS Xd, Xn, Xm
 
     // YOUR CODE HERE
-
+    SUBS X0, X0, X1
     // TODO #4: Branch back to sum_loop if X0 is NOT zero
     // Syntax: B.NE label
-
+    B.NE sum_loop
     // YOUR CODE HERE
 
     // =========================================================================
